@@ -47,4 +47,15 @@ class User extends Authenticatable
     public function todos() {
         return $this->hasMany(Todo::class);
     }     
+
+    /*
+    * [@name]
+    ** Description: 
+    * [return]
+    * [data]
+    */
+
+    public function contacts() {
+        return $this->hasMany(Contact::class);
+    }     
 }
