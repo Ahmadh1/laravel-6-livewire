@@ -15,11 +15,33 @@ class Search extends Component
     ** Description: 
     * [return]
     * [data]
+    */     
+    public function mount() {
+        $this->fadeaway();
+    }
+    
+    /*
+    * [@name]
+    ** Description: 
+    * [return]
+    * [data]
+    */
+    public function fadeaway() {
+        $this->query = '';
+        $this->contacts = [];
+    }
+    /*
+    * [@name]
+    ** Description: 
+    * [return]
+    * [data]
     */
     public function updatedQuery() {
         $this->contacts = Contact::where('name', 'like', '%'. $this->query . '%')
-                            ->get()
-                                ->toArray();
+                                    ->orWhere('phone', 'like', '%' . $this->query . '%')
+                                    ->orWhere('email', 'like', '%' . $this->query . '%')
+                                    ->get()
+                                    ->toArray();
     }
     /*
     * [@name]
